@@ -31,7 +31,6 @@ public class Client {
 
             if (vehicles.getCommandMap().containsKey(cmd)) {
                 vehicles.getCommandMap().get(cmd).execute(vehicles, arg);
-                System.out.println(vehicles.getCommandMap());
             } else {
                 vehicles.getOut().writeln("Command not found");
             }
