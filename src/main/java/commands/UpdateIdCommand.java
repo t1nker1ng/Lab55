@@ -9,10 +9,21 @@ import java.util.HashMap;
 public class UpdateIdCommand implements Command {
     @Override
     public void execute(Vehicles vehicles, String args) {
+        long id = 0;
+        if (!args.isEmpty())
+            try{
+                id = Long.parseLong(args);
+            }
+            catch (Exception ex){
+                vehicles.getOut().writeln("Wrong arg");
+            }
+        else{
+            System.err.println("Wront arg");
+            return;
+        }
         CarGetter carGetter = new CarGetter(vehicles.getIn(), vehicles.getOut(), !vehicles.isScript());
         Car o = carGetter.readCarGetter();
-        long key = o.getId();
-        vehicles.getCollection_manager().update_id(o, key);
+        vehicles.getCollection_manager().update_id(o, id);
     }
 
     @Override

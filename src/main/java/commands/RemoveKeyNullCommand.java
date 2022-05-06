@@ -1,20 +1,24 @@
 package commands;
 
 import Client.Vehicles;
-import Collec.Car;
-import Collec.VehicleType;
-import IOManager.*;
 
-import java.util.ArrayList;
 import java.util.HashMap;
 
 public class RemoveKeyNullCommand implements Command {
     @Override
     public void execute(Vehicles vehicles, String args) {
-        CarGetter carGetter = new CarGetter(vehicles.getIn(), vehicles.getOut(), !vehicles.isScript());
-        Car o = carGetter.readCarGetter();
-        long key = o.getId();
-        vehicles.getCollection_manager().remove_key(key);
+        long key = 0;
+        if (!args.isEmpty()){
+            try{
+                key = Long.parseLong(args);
+            } catch (Exception ex){
+                vehicles.getOut().writeln("Неверно введен ключ");
+            }
+            vehicles.getCollection_manager().remove_key(key);
+        }
+        else{
+            vehicles.getOut().writeln("Вы ввели не ключ");
+        }
     }
 
     @Override

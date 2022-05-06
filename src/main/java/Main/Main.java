@@ -18,10 +18,8 @@ public class Main {
         HashMap<String, Command> commandMap = new HashMap<String, Command>();
 
         ClearCommand.register(commandMap);
-        ExecuteScriptCommand.register(commandMap);
         ExitCommand.register(commandMap);
         HelpCommand.register(commandMap);
-        HistoryCommand.register(commandMap);
         InfoCommand.register(commandMap);
         InsertNullCommand.register(commandMap);
         MinByCoordinatesCommand.register(commandMap);

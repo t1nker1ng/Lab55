@@ -13,7 +13,7 @@ public class Car implements Comparable<Car> {
     private final java.util.Date creationDate;
 
     public Car(String name, Coordinates coordinates, Integer enginePower, Date creationDate, VehicleType type, FuelType fuelType) {
-        this.id= ++idOrder;
+        this.id = ++idOrder;
         this.name = name;
         this.coordinates = coordinates;
         this.enginePower = enginePower;
@@ -37,18 +37,19 @@ public class Car implements Comparable<Car> {
         );
     }
 
+    @Override
     public int compareTo(Car o) {
-        if (o == null){
+        if (o == null) {
             return 1;
         }
         int result = this.name.compareTo(o.name);
         if (result == 0) {
-            result = this.enginePower - o.enginePower;
+            result = this.enginePower.compareTo(o.enginePower);
         }
         if (result == 0) {
-                result = this.coordinates.compareTo(o.coordinates);
+            result = this.coordinates.compareTo(o.coordinates);
         }
-        if (result == 0){
+        if (result == 0) {
             result = this.creationDate.compareTo(o.creationDate);
         }
         return result;

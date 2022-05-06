@@ -34,7 +34,9 @@ public class Collection_manager {
     }
 
     public void show() {
+        out.writeln("-------------------------");
         out.writeln(Collection.toString());
+        out.writeln("-------------------------");
     }
 
     public void insert_null(Car o, long key) {
@@ -69,18 +71,14 @@ public class Collection_manager {
     }
 
     public void replace_if_greater(Car o, long key) {
-        for (HashMap.Entry<Long, Car> entry : Collection.entrySet()) {
-            if (entry.getValue().compareTo(o) > 0) {
-                Collection.replace(key, entry.getValue(), o);
-            }
+        if (Collection.get(key).compareTo(o) >= 0){
+            Collection.replace(key,o);
         }
     }
 
     public void replace_if_lowe(Car o, long key) {
-        for (HashMap.Entry<Long, Car> entry : Collection.entrySet()) {
-            if (entry.getValue().compareTo(o) < 0) {
-                Collection.replace(key, entry.getValue(), o);
-            }
+        if (Collection.get(key).compareTo(o) <= 0){
+            Collection.replace(key,o);
         }
     }
 
@@ -96,11 +94,10 @@ public class Collection_manager {
             System.out.println("Коллекция пуста");
     }
 
-    public void remove_any_by_type(Car o, VehicleType type) {
+    public void remove_any_by_type(VehicleType type) {
         for (HashMap.Entry<Long, Car> entry : Collection.entrySet()) {
-            if (entry.getValue().getType().compareTo(o.getType()) == 0) {
+            if (entry.getValue().getType().compareTo(type) == 0) {
                 Collection.remove(entry.getKey());
-                break;
             }
         }
     }
